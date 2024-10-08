@@ -27,3 +27,12 @@ app.post("/canciones", (req, res) => {
   res.send("Canción agregada con Exito");
 });
 
+app.put("/canciones/:id", (req, res) => {
+  const { id } = req.params;
+  const rep = req.body;
+  const repertorio = JSON.parse(fs.readFileSync("repertorio.json"));
+  const index = repertorio.findIndex((p) => p.id == id);
+  repertorio[index] = rep;
+  fs.writeFileSync("repertorio.json", JSON.stringify(repertorio));
+  res.send("Canción modificada con éxito");
+});
