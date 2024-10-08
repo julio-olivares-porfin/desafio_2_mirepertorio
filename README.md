@@ -1,10 +1,8 @@
 # Desafío Introducción a Express
 
 ## Integrantes
-
-#### **Julio Olivaress**
+Julio Olivares
 
 ## Disclaimer
-
-#### Por motivos personales de trabajo, no pude desarrollar el desafío con en grupo
+Por motivos personales de trabajo, no pude desarrollar el desafío en grupo
 
