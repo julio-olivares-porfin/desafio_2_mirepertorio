@@ -36,3 +36,12 @@ app.put("/canciones/:id", (req, res) => {
   fs.writeFileSync("repertorio.json", JSON.stringify(repertorio));
   res.send("Canción modificada con éxito");
 });
+
+app.delete("/canciones/:id", (req, res) => {
+  const { id } = req.params;
+  const repertorio = JSON.parse(fs.readFileSync("repertorio.json"));
+  const index = repertorio.findIndex((p) => p.id == id);
+  repertorio.splice(index, 1);
+  fs.writeFileSync("repertorio.json", JSON.stringify(repertorio));
+  res.send("Canción eliminada con éxito");
+});
