@@ -4,7 +4,7 @@ const path = require("path");
 
 const app = express();
 
-app.listen(3000, console.log("Servidor Levantado en el puerto 3000!"));
+app.listen(3000, console.log("Servidor arriba en el puerto 3000"));
 
 app.use(express.json());
 
@@ -18,3 +18,12 @@ app.get("/canciones", (req, res) => {
   const canciones = JSON.parse(fs.readFileSync("repertorio.json"));
   res.json(canciones);
 });
+
+app.post("/canciones", (req, res) => {
+  const rep = req.body;
+  const repertorio = JSON.parse(fs.readFileSync("repertorio.json"));
+  repertorio.push(rep);
+  fs.writeFileSync("repertorio.json", JSON.stringify(repertorio));
+  res.send("Canción agregada con Exito");
+});
+
